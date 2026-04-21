@@ -449,13 +449,13 @@ function applyTheme(mode) {
     document.body.classList.add('light-mode');
     if (logoImg)  logoImg.src = 'images/White_Full.png';
     if (heroLogo) heroLogo.src = 'images/Logo_white.png';
-    if (heroLogoo) heroLogoo.src = 'images/vivek_white.png';
+    if (heroLogoo) heroLogoo.src = 'images/vivek_white.PNG';
     if (themeLabel) themeLabel.textContent = 'Dark';
   } else {
     document.body.classList.remove('light-mode');
     if (logoImg)  logoImg.src = 'images/Black_Full.png';
     if (heroLogo) heroLogo.src = 'images/Logo_black.png';
-    if (heroLogoo) heroLogoo.src = 'images/vivek_black.png';
+    if (heroLogoo) heroLogoo.src = 'images/vivek_black.PNG';
     if (themeLabel) themeLabel.textContent = 'Light';
   }
   localStorage.setItem('vx-theme', mode);
