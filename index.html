@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VECTORIX — Where Ideas Become Reality</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Particle canvas -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- Scanline overlay -->
+<div class="scanline-overlay"></div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <a class="nav-logo" href="#home" data-goto="home">
+    <img id="logoImg" src="images/Black_Full.png" alt="VECTORIX"
+         onerror="this.style.display='none'; document.getElementById('logoText').style.display='flex'">
+    <div id="logoText" class="nav-logo-text" style="display:none">
+      VECTORIX<span>Vector Minds · Shaping the Future</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#home"       data-page="home">Home</a></li>
+    <li><a href="#about"      data-page="about">About</a></li>
+    <li><a href="#team"       data-page="team">Team</a></li>
+    <li><a href="#projects"   data-page="projects">Projects</a></li>
+    <li><a href="#events"     data-page="events">Events</a></li>
+    <li><a href="#mentorship" data-page="mentorship">Mentorship</a></li>
+    <li><a href="#blog"       data-page="blog">Blog</a></li>
+    <li><a href="#contact"    data-page="contact">Contact</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="nav-join-highlight">Join Us ⚡</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      <span class="status-text">Nationwide · Active</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <span class="theme-icon theme-icon--dark">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </span>
+      <span class="theme-icon theme-icon--light">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </span>
+      <span class="theme-label">LIGHT</span>
+    </button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ─── MOBILE NAV DRAWER ─── -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#home"       data-mobile-page="home">Home</a>
+  <a href="#about"      data-mobile-page="about">About</a>
+  <a href="#team"       data-mobile-page="team">Team</a>
+  <a href="#projects"   data-mobile-page="projects">Projects</a>
+  <a href="#events"     data-mobile-page="events">Events</a>
+  <a href="#mentorship" data-mobile-page="mentorship">Mentorship</a>
+  <a href="#blog"       data-mobile-page="blog">Blog</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="mobile-join-highlight">⚡ Join Us — Apply Now</a>
+  <a href="#contact"    data-mobile-page="contact">Contact</a>
+  <div class="nav-mobile-divider"></div>
+  <div class="nav-mobile-status">
+    <div class="status-dot"></div>
+    VECTORIX · Nationwide · Active
+  </div>
+</div>
+
+
+<main>
+<!-- ═══════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════ -->
+<div id="page-home" class="page">
+
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow hero-glow-2"></div>
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="tag-dot"></span>
+        Student Tech Community · Nationwide · India
+      </div>
+
+      <!--<div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="t-dot t-red"></span>
+          <span class="t-dot t-yellow"></span>
+          <span class="t-dot t-green"></span>
+          <span class="t-title">vectorix_boot.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">init community --name VECTORIX</span></div>
+          <div class="t-line"><span class="t-out">✓ Loading 500+ members...</span></div>
+          <div class="t-line"><span class="t-out">✓ Syncing 50+ projects...</span></div>
+          <div class="t-line"><span class="t-out">✓ Connecting 10+ colleges...</span></div>
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">status<span class="cursor-blink">_</span></span></div>
+          <div class="t-line"><span class="t-success">► SYSTEM ONLINE · BUILD. LEARN. INNOVATE.</span></div>
+        </div>
+      </div> -->
+
+      <h1 class="hero-name">
+        <span class="line1">Building</span>
+        <span class="line2">the Future</span>
+      </h1>
+
+      <p class="hero-tagline">"Where Ideas Become Reality"</p>
+
+      <p class="hero-desc">
+        VECTORIX is a nationwide tech community empowering students to build
+        real-world projects, gain industry experience, and grow through
+        mentorship. Build. Learn. Innovate.
+      </p>
+
+      <div class="hero-btns">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary btn-glow">
+          <span class="btn-icon">⚡</span> Join Community →
+        </a>
+        <a href="#projects" class="btn-outline" data-goto="projects">Explore Projects</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" data-count="500">0</div>
+          <div class="stat-label">Members</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="50">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="20">0</div>
+          <div class="stat-label">Events</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="10">0</div>
+          <div class="stat-label">Colleges</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Logo Display -->
+    <div class="hero-right">
+      <div class="hero-logo-display">
+        <div class="hex-ring hex-ring-1"></div>
+        <div class="hex-ring hex-ring-2"></div>
+        <div class="hex-ring hex-ring-3"></div>
+        <img class="main-logo" src="images/Logo_black.png" alt="VECTORIX"
+             onerror="this.style.display='none'">
+        <div class="hero-badges">
+          <div class="hero-badge"><span class="badge-icon">⚡</span> Real Projects</div>
+          <div class="hero-badge"><span class="badge-icon">🤝</span> Peer Mentorship</div>
+          <div class="hero-badge"><span class="badge-icon">🏆</span> Hackathons</div>
+          <div class="hero-badge"><span class="badge-icon">🌐</span> Cross-Institution</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Stack Ticker -->
+  <div class="tech-ticker">
+    <div class="ticker-track">
+      <span>Python</span><span>·</span><span>TensorFlow</span><span>·</span><span>React</span><span>·</span><span>Node.js</span><span>·</span><span>IoT</span><span>·</span><span>OpenCV</span><span>·</span><span>MongoDB</span><span>·</span><span>Kubernetes</span><span>·</span><span>LLMs</span><span>·</span><span>Arduino</span><span>·</span><span>Flutter</span><span>·</span><span>AWS</span><span>·</span>
+      <span>Python</span><span>·</span><span>TensorFlow</span><span>·</span><span>React</span><span>·</span><span>Node.js</span><span>·</span><span>IoT</span><span>·</span><span>OpenCV</span><span>·</span><span>MongoDB</span><span>·</span><span>Kubernetes</span><span>·</span><span>LLMs</span><span>·</span><span>Arduino</span><span>·</span><span>Flutter</span><span>·</span><span>AWS</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="home-cta-section">
+    <div class="home-cta-box">
+      <div class="cta-circuit-left"></div>
+      <div class="cta-circuit-right"></div>
+      <p class="home-cta-label">⚡ Ready to build something impactful?</p>
+      <h2 class="home-cta-title">Join <span>VECTORIX</span> today</h2>
+      <p class="home-cta-text">
+        VECTORIX is a student-driven technical community focused on bridging the gap between
+        academic learning and real-world application. Collaborate, innovate, and grow together.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary btn-glow btn-lg">
+        Start Your Journey →
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 <span>VECTORIX</span> — All systems operational</div>
+    <div>Code the Future · Vector Minds · Shaping the Future</div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════ -->
+<div id="page-about" class="page" style="display:none">
+<section class="page-section">
+
+  <!-- HEADER -->
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About VECTORIX</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- TWO COLUMN: LEFT = Text, RIGHT = Image -->
+  <div class="about-intro-row fade-in">
+
+    <!-- LEFT: Intro Text -->
+    <div class="about-intro-block">
+      <h3>
+        <strong>“The more we come out and do good to others, the more our hearts will be purified.”</strong>  
+        <br>~ Swami Vivekananda.
+      </h3>
+      <p>
+        Inspired by this thought, <strong>VECTORIX COMMUNITY</strong> believes that true growth comes not just from personal success, but from contributing to the growth of others. The community encourages students to collaborate, share knowledge, and uplift one another through mentorship, teamwork, and meaningful projects. By fostering a culture of giving and learning together, VECTORIX creates an environment where impact and innovation go hand in hand.
+      </p>
+      <p>
+        Beyond technical skills, <strong>VECTORIX</strong> nurtures a sense of purpose and responsibility among its members. It empowers students to use their <strong>abilities to solve real-world problems, build solutions that matter, and create value for society</strong>. Through continuous collaboration, leadership opportunities, and a shared vision of progress, VECTORIX is shaping individuals who are not only skilled developers but also thoughtful contributors to the future.
+      </p>
+      <p>At its core, VECTORIX is a movement driven by passion, purpose, and people. It stands as a platform where ideas turn into action, connections turn into collaborations, and students transform into future leaders ready to make a meaningful impact.</p>
+    </div>
+
+    <!-- RIGHT: Logo/Image -->
+    <div class="about-intro-image">
+      <div class="hero-logo-display">
+        <div class="hex-ring hex-ring-1"></div>
+        <div class="hex-ring hex-ring-2"></div>
+        <div class="hex-ring hex-ring-3"></div>
+        <img class="main-logoo" src="images/vivek_black.png" alt="VECTORIX"
+             onerror="this.style.display='none'">
+        <div class="hero-badges">
+          <div class="hero-badge"><span class="badge-icon">🔥</span> Swami Vivekananda</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <div class="about-philosophy fade-in">
+    "To create a nationwide ecosystem where students collaborate to innovate, solve real-world problems,
+    and become industry-ready professionals." — Our Vision
+  </div>
+
+  <!-- REST OF PAGE (unchanged) -->
+  <div class="sub-section-header">
+    <span class="section-num">·</span>
+    <h3>Our Mission</h3>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid-3 fade-in" id="about-cards-container">
+    <div class="about-card">
+      <div class="about-card-icon">🛠️</div>
+      <h3>Real Projects</h3>
+      <p>Enable students to work on real-world projects that create tangible impact and build portfolios that matter.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🤝</div>
+      <h3>Peer Learning</h3>
+      <p>Foster peer-to-peer learning and mentorship so every student can grow faster alongside their peers.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🌐</div>
+      <h3>Strong Community</h3>
+      <p>Build a strong technical community across institutions, connecting talented students nationwide.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🏆</div>
+      <h3>Hackathons</h3>
+      <p>Organize hackathons and workshops that push students to think creatively and solve real problems.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">💼</div>
+      <h3>Industry Connect</h3>
+      <p>Connect students with industry opportunities, internships, and experienced professionals.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">👑</div>
+      <h3>Leadership</h3>
+      <p>Develop leadership among students, creating the next generation of tech entrepreneurs and innovators.</p>
+    </div>
+  </div>
+
+  <div class="sub-section-header">
+    <span class="section-num">·</span>
+    <h3>Our Objectives</h3>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-objectives fade-in">
+    <div class="obj-item">
+      <div class="obj-num">01</div>
+      <div class="obj-text">
+        <strong>Promote Practical Learning</strong>
+        Bridge classroom theory with real-world application through hands-on project work.
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">02</div>
+      <div class="obj-text">
+        <strong>Encourage Innovation</strong>
+        Create a culture of experimentation, research, and creative problem-solving.
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">03</div>
+      <div class="obj-text">
+        <strong>Organize Events</strong>
+        Run hackathons, workshops, and seminars that challenge and inspire students.
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">04</div>
+      <div class="obj-text">
+        <strong>Develop Leaders</strong>
+        Nurture leadership skills through structured roles and responsibilities.
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section-header">
+    <span class="section-num">·</span>
+    <h3>Our Structure</h3>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="structure-grid fade-in">
+    <div class="struct-card">
+      <div class="struct-card-num">01</div>
+      <h4>National Committee</h4>
+      <p>Strategy, partnerships, and overall vision — the core leadership driving VECTORIX forward.</p>
+    </div>
+    <div class="struct-card">
+      <div class="struct-card-num">02</div>
+      <h4>State Leadership</h4>
+      <p>Regional coordination and growth — bridging the national vision with local execution.</p>
+    </div>
+    <div class="struct-card">
+      <div class="struct-card-num">03</div>
+      <h4>College Chapters</h4>
+      <p>Execution and community building at the ground level — where ideas come to life.</p>
+    </div>
+  </div>
+
+</section>
+  <footer>
+    <div>© 2025 <span>VECTORIX</span> — All systems operational</div>
+    <div>Build. Learn. Innovate.</div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: TEAM
+═══════════════════════════════════════ -->
+<div id="page-team" class="page" style="display:none">
+<section class="page-section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Our Team</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="team-intro fade-in">
+    Meet the people driving innovation and building the VECTORIX ecosystem — passionate builders,
+    mentors, and leaders shaping the next generation of tech talent.
+  </p>
+  <div class="team-grid fade-in" id="team-grid-container">
+    <!-- Populated dynamically from data/data.json via loadTeamData() in app.js -->
+  </div>
+  <div class="team-cta fade-in">
+    <h3>Want to be part of the team?</h3>
+    <p>We're always looking for passionate students to take on leadership roles and help grow VECTORIX nationwide.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary btn-glow">Apply Now →</a>
+  </div>
+</section>
+  <footer><div>© 2025 <span>VECTORIX</span> — All systems operational</div><div>Build. Learn. Innovate.</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: PROJECTS
+═══════════════════════════════════════ -->
+<div id="page-projects" class="page" style="display:none">
+<section class="page-section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-filter fade-in">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ai">AI / ML</button>
+    <button class="filter-btn" data-filter="iot">IoT</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="app">App Dev</button>
+  </div>
+  <div class="projects-grid fade-in" id="projects-grid-container">
+    <div class="proj-card" data-cat="iot">
+      <div class="proj-num">PROJ · 001</div>
+      <div class="proj-icon-area">🌾</div>
+      <div class="proj-name">Smart Agriculture RC Car</div>
+      <p class="proj-desc">An IoT-based system that monitors soil conditions and provides real-time recommendations for farmers, combining robotics with agricultural intelligence.</p>
+      <div class="proj-stack">
+        <span class="proj-tech">Python</span><span class="proj-tech">IoT Sensors</span><span class="proj-tech">Cloud</span><span class="proj-tech">RC Systems</span>
+      </div>
+      <div class="proj-btns"><a href="#" class="proj-btn-sm">View Project →</a><a href="#" class="proj-btn-sm">GitHub ⌥</a></div>
+    </div>
+    <div class="proj-card" data-cat="ai">
+      <div class="proj-num">PROJ · 002</div>
+      <div class="proj-icon-area">👁️</div>
+      <div class="proj-name">Divya Drishti</div>
+      <p class="proj-desc">AI-powered navigation assistant for visually impaired individuals using real-time object detection and spatial audio feedback for directional guidance.</p>
+      <div class="proj-stack">
+        <span class="proj-tech">Python</span><span class="proj-tech">OpenCV</span><span class="proj-tech">TensorFlow</span><span class="proj-tech">Audio Synthesis</span>
+      </div>
+      <div class="proj-btns"><a href="#" class="proj-btn-sm">View Project →</a><a href="#" class="proj-btn-sm">GitHub ⌥</a></div>
+    </div>
+    <div class="proj-card" data-cat="ai">
+      <div class="proj-num">PROJ · 003</div>
+      <div class="proj-icon-area">🏥</div>
+      <div class="proj-name">MedAI Diagnostic System</div>
+      <p class="proj-desc">Deep learning models for medical image classification with confidence-score reporting and a full clinical UI deployed via Streamlit for non-technical clinicians.</p>
+      <div class="proj-stack">
+        <span class="proj-tech">TensorFlow</span><span class="proj-tech">Keras</span><span class="proj-tech">Streamlit</span><span class="proj-tech">CNN</span>
+      </div>
+      <div class="proj-btns"><a href="#" class="proj-btn-sm">View Project →</a><a href="#" class="proj-btn-sm">GitHub ⌥</a></div>
+    </div>
+    <div class="proj-card" data-cat="web">
+      <div class="proj-num">PROJ · 004</div>
+      <div class="proj-icon-area">🌐</div>
+      <div class="proj-name">VECTORIX Platform</div>
+      <p class="proj-desc">The official platform for the VECTORIX community — built by members, for members. A full-stack web application supporting events, mentorship, and project showcasing.</p>
+      <div class="proj-stack">
+        <span class="proj-tech">React</span><span class="proj-tech">Node.js</span><span class="proj-tech">MongoDB</span><span class="proj-tech">HTML/CSS</span>
+      </div>
+      <div class="proj-btns"><a href="#" class="proj-btn-sm">View Project →</a><a href="#" class="proj-btn-sm">GitHub ⌥</a></div>
+    </div>
+  </div>
+  <div class="proj-cta fade-in">
+    <h3>Got a project?</h3>
+    <p>Showcase it with VECTORIX. Submit your project and get feedback from the community.</p>
+    
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSccvWpNKp0VfSIs8SiJA3V-jDjP7rV4MGGZS4Oh6F3rnN9KtA/viewform?usp=header" target="_blank" class="btn-primary btn-glow">Submit Project →</a>
+  </div>
+</section>
+  <footer><div>© 2025 <span>VECTORIX</span> — All systems operational</div><div>Build. Learn. Innovate.</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: EVENTS
+═══════════════════════════════════════ -->
+<div id="page-events" class="page" style="display:none">
+<section class="page-section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Events</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="events-intro fade-in">Learn, compete, and grow through our workshops, hackathons, and technical events. VECTORIX events are designed to push your limits, spark creativity, and connect you with like-minded builders.</p>
+  <div class="events-grid fade-in" id="events-grid-container">
+    <div class="event-card featured">
+      <div class="event-status upcoming">Upcoming</div>
+      <div class="event-title">VECTORIX Hackathon 2025</div>
+      <p class="event-desc">A 24-hour national hackathon focused on solving real-world problems using technology. Open to all VECTORIX members across India.</p>
+      <div class="event-meta">
+        <div class="event-meta-item"><span>📅</span> TBD 2025</div>
+        <div class="event-meta-item"><span>🌐</span> Online + Offline</div>
+        <div class="event-meta-item"><span>🏆</span> Prize Pool: TBA</div>
+      </div>
+      <div class="event-btns">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary btn-glow" style="font-size:11px;padding:10px 18px;">Register →</a>
+        <a href="#" class="btn-outline" style="font-size:11px;padding:10px 18px;">View Details</a>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-status upcoming">Upcoming</div>
+      <div class="event-title">AI/ML Workshop Series</div>
+      <p class="event-desc">Hands-on workshops covering the fundamentals of AI and machine learning — from basics to deployment. Led by experienced mentors and practitioners.</p>
+      <div class="event-meta">
+        <div class="event-meta-item"><span>📅</span> Monthly</div>
+        <div class="event-meta-item"><span>🌐</span> Online</div>
+        <div class="event-meta-item"><span>👥</span> All Levels</div>
+      </div>
+      <div class="event-btns">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary" style="font-size:11px;padding:10px 18px;">Register →</a>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-status upcoming">Upcoming</div>
+      <div class="event-title">Web Dev Bootcamp</div>
+      <p class="event-desc">A 2-week intensive bootcamp covering modern web development — React, Node.js, databases, and deployment. Build a real project by the end.</p>
+      <div class="event-meta">
+        <div class="event-meta-item"><span>📅</span> Q2 2025</div>
+        <div class="event-meta-item"><span>🌐</span> Online</div>
+        <div class="event-meta-item"><span>⏱️</span> 2 Weeks</div>
+      </div>
+      <div class="event-btns">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary" style="font-size:11px;padding:10px 18px;">Register →</a>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-status past">Past</div>
+      <div class="event-title">Founder's Kickoff Meet</div>
+      <p class="event-desc">The inaugural VECTORIX community meeting — where it all began. Founding members came together to define the vision and structure of the community.</p>
+      <div class="event-meta">
+        <div class="event-meta-item"><span>📅</span> Early 2025</div>
+        <div class="event-meta-item"><span>🌐</span> Online</div>
+        <div class="event-meta-item"><span>👥</span> Founding Members</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <footer><div>© 2025 <span>VECTORIX</span> — All systems operational</div><div>Build. Learn. Innovate.</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: MENTORSHIP
+═══════════════════════════════════════ -->
+<div id="page-mentorship" class="page" style="display:none">
+<section class="page-section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Mentorship</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="mentorship-intro fade-in">Learn from experienced mentors and accelerate your growth. VECTORIX connects students with industry professionals and senior developers for personalized guidance.</p>
+  <div class="mentorship-grid fade-in">
+    <div class="mentor-panel">
+      <h3>Become a Mentor</h3>
+      <p>Share your knowledge and guide aspiring developers. As a VECTORIX mentor, you'll make a lasting impact on the next generation of tech talent.</p>
+      <a href="#contact" class="btn-outline" data-goto="contact" style="font-size:11px;padding:10px 18px;">Apply as Mentor →</a>
+    </div>
+    <div class="mentor-panel">
+      <h3>Find a Mentor</h3>
+      <p>Get personalized guidance in your domain from experienced mentors. Whether you're just starting out or leveling up, we'll match you with the right mentor.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary btn-glow" style="font-size:11px;padding:10px 18px;">Request Mentorship →</a>
+    </div>
+  </div>
+  <div class="sub-section-header">
+    <span class="section-num">·</span>
+    <h3>Mentorship Domains</h3>
+    <div class="section-line"></div>
+  </div>
+  <div class="domains-grid fade-in">
+    <div class="domain-card"><div class="domain-icon">🤖</div><div class="domain-name">AI / ML</div></div>
+    <div class="domain-card"><div class="domain-icon">🌐</div><div class="domain-name">Web Dev</div></div>
+    <div class="domain-card"><div class="domain-icon">📱</div><div class="domain-name">App Dev</div></div>
+    <div class="domain-card"><div class="domain-icon">⚡</div><div class="domain-name">IoT</div></div>
+    <div class="domain-card"><div class="domain-icon">💻</div><div class="domain-name">Competitive Prog</div></div>
+  </div>
+</section>
+  <footer><div>© 2025 <span>VECTORIX</span> — All systems operational</div><div>Build. Learn. Innovate.</div></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: BLOG
+═══════════════════════════════════════ -->
+<div id="page-blog" class="page" style="display:none">
+<section class="page-section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Blog &amp; Resources</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="blog-intro fade-in">Insights, tutorials, and experiences shared by the VECTORIX community. Learn from real builders, real projects, and real experiences.</p>
+  <!-- Blog controls: search + sort + category filters -->
+  <div class="blog-controls fade-in">
+    <div class="blog-search-wrap">
+      <svg class="blog-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="blogSearchInput" class="blog-search-input" placeholder="Search posts…" autocomplete="off">
+      <button class="blog-search-clear" id="blogSearchClear" title="Clear search">✕</button>
+    </div>
+    <div class="blog-sort-wrap">
+      <select id="blogSortSelect" class="blog-sort-select">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+      </select>
+    </div>
+  </div>
+  <div class="blog-cats fade-in" id="blogCatsRow">
+    <button class="blog-cat active" data-cat="all">All</button>
+    <button class="blog-cat" data-cat="Tutorials">Tutorials</button>
+    <button class="blog-cat" data-cat="Project Guides">Project Guides</button>
+    <button class="blog-cat" data-cat="Interview Prep">Interview Prep</button>
+    <button class="blog-cat" data-cat="Industry Trends">Industry Trends</button>
+  </div>
+  <div id="blogNoResults" style="display:none;padding:3rem 0;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:0.1em;">NO POSTS MATCH YOUR SEARCH.</div>
+  <div class="blog-grid fade-in" id="blog-grid-container">
+    <div class="blog-card" data-date="20250101" data-cat="Tutorials" data-title="How to Build Your First AI Project" data-desc="A step-by-step guide to building your first machine learning project from scratch — data collection, model training, and deployment." onclick="openBlogModal({title:'How to Build Your First AI Project',cat:'Tutorials',date:'2025',readTime:'8 min read',desc:'A step-by-step guide to building your first machine learning project from scratch — data collection, model training, and deployment.',content:'<h3>Introduction</h3><p>Building your first AI project can seem daunting, but with the right approach, it becomes an exciting journey. In this guide, we\'ll walk through the entire process step by step.</p><h3>Step 1: Define Your Problem</h3><p>Before writing a single line of code, clearly define what problem you want to solve. The clearest problems make the best ML projects. Ask yourself: What data do I have? What am I trying to predict or classify?</p><h3>Step 2: Collect & Prepare Data</h3><p>Data is the foundation of any ML project. You\'ll need to gather relevant datasets, clean missing values, normalize features, and split your data into training and test sets.</p><h3>Step 3: Choose Your Model</h3><p>Start simple. Linear regression, decision trees, or a basic neural network are great starting points. Libraries like scikit-learn, TensorFlow, and PyTorch make this accessible.</p><h3>Step 4: Train & Evaluate</h3><p>Train your model on the training set, then evaluate performance on the test set. Key metrics include accuracy, precision, recall, and F1 score depending on your task.</p><h3>Step 5: Deploy</h3><p>Package your model using Flask or FastAPI, containerize with Docker, and deploy to cloud platforms like AWS, GCP, or Heroku. Congratulations — you\'ve shipped your first AI project!</p>'})">
+      <span class="blog-cat-tag">Tutorials</span>
+      <div class="blog-title">How to Build Your First AI Project</div>
+      <p class="blog-desc">A step-by-step guide to building your first machine learning project from scratch — data collection, model training, and deployment.</p>
+      <div class="blog-meta">VECTORIX · 2025 · 8 min read</div>
+    </div>
+    <div class="blog-card" data-date="20250201" data-cat="Interview Prep" data-title="Top 10 DSA Questions for Interviews" data-desc="The most common data structures and algorithms questions asked at top tech companies — with solutions and explanations." onclick="openBlogModal({title:'Top 10 DSA Questions for Interviews',cat:'Interview Prep',date:'2025',readTime:'12 min read',desc:'The most common data structures and algorithms questions asked at top tech companies — with solutions and explanations.',content:'<h3>Why DSA Matters</h3><p>Data Structures & Algorithms form the backbone of technical interviews at top companies like Google, Amazon, Meta, and Microsoft. Mastering these concepts gives you a massive edge.</p><h3>1. Two Sum</h3><p>Given an array of integers, return indices of the two numbers that add up to a target. Solved efficiently with a hash map in O(n) time.</p><h3>2. Valid Parentheses</h3><p>Use a stack to track opening brackets and match them with closing ones. A classic stack problem tested at every level.</p><h3>3. Merge Two Sorted Lists</h3><p>Merge two sorted linked lists into one. Practice pointer manipulation and recursion here.</p><h3>4. Binary Search</h3><p>Search a sorted array in O(log n) time. Master the template: left, right, mid — and know when to move each pointer.</p><h3>5. Maximum Subarray (Kadane\'s Algorithm)</h3><p>Find the contiguous subarray with the largest sum using dynamic programming in O(n).</p><h3>6. Climbing Stairs</h3><p>Classic DP / Fibonacci variant. The number of ways to climb n stairs taking 1 or 2 steps at a time.</p><h3>7. Reverse a Linked List</h3><p>Iteratively or recursively reverse a linked list. Fundamental pointer manipulation skill.</h3><h3>8. LRU Cache</h3><p>Implement an LRU Cache using a doubly linked list + hash map. Tests system design thinking in code.</p><h3>9. Word Search</h3><p>DFS/backtracking on a 2D grid. A staple graph traversal problem.</p><h3>10. Merge Intervals</h3><p>Sort intervals by start time, then merge overlapping ones. Tests sorting + greedy thinking.</p>'})">
+      <span class="blog-cat-tag">Interview Prep</span>
+      <div class="blog-title">Top 10 DSA Questions for Interviews</div>
+      <p class="blog-desc">The most common data structures and algorithms questions asked at top tech companies — with solutions and explanations.</p>
+      <div class="blog-meta">VECTORIX · 2025 · 12 min read</div>
+    </div>
+    <div class="blog-card" data-date="20250301" data-cat="Project Guides" data-title="Beginner's Guide to IoT Systems" data-desc="Get started with IoT development — from picking hardware to writing your first sensor integration and cloud data pipeline." onclick="openBlogModal({title:'Beginner\'s Guide to IoT Systems',cat:'Project Guides',date:'2025',readTime:'10 min read',desc:'Get started with IoT development — from picking hardware to writing your first sensor integration and cloud data pipeline.',content:'<h3>What is IoT?</h3><p>The Internet of Things (IoT) refers to physical devices embedded with sensors, software, and connectivity that allows them to collect and exchange data. From smart homes to industrial automation, IoT is everywhere.</p><h3>Choosing Your Hardware</h3><p>For beginners, the most popular options are:<br>• <strong>Arduino</strong> — Simple, affordable, great for sensors and actuators<br>• <strong>Raspberry Pi</strong> — More powerful, runs Linux, great for complex projects<br>• <strong>ESP8266/ESP32</strong> — WiFi-enabled microcontrollers, perfect for IoT</p><h3>Your First Sensor Integration</h3><p>Start with a temperature/humidity sensor (DHT11 or DHT22). Connect it to your microcontroller, install the appropriate library, and read values with a few lines of code.</p><h3>Building a Data Pipeline</h3><p>Send sensor data via MQTT protocol to a broker like Mosquitto. From there, pipe data into InfluxDB for time-series storage and visualize with Grafana dashboards.</p><h3>Cloud Integration</h3><p>Platforms like AWS IoT Core, Google Cloud IoT, and Azure IoT Hub provide managed infrastructure for device management, security, and data processing at scale.</p><h3>Next Steps</h3><p>Once comfortable, explore edge computing with TensorFlow Lite, build smart home automations, or contribute to open-source IoT projects on GitHub.</p>'})">
+      <span class="blog-cat-tag">Project Guides</span>
+      <div class="blog-title">Beginner's Guide to IoT Systems</div>
+      <p class="blog-desc">Get started with IoT development — from picking hardware to writing your first sensor integration and cloud data pipeline.</p>
+      <div class="blog-meta">VECTORIX · 2025 · 10 min read</div>
+    </div>
+    <div class="blog-card" data-date="20250401" data-cat="Industry Trends" data-title="AI in 2025: What Students Should Know" data-desc="The AI landscape is evolving fast. Here's what skills, tools, and frameworks you need to stay ahead as a student developer." onclick="openBlogModal({title:'AI in 2025: What Students Should Know',cat:'Industry Trends',date:'2025',readTime:'6 min read',desc:'The AI landscape is evolving fast. Here\'s what skills, tools, and frameworks you need to stay ahead as a student developer.',content:'<h3>The Current Landscape</h3><p>AI has moved from research labs to every product in 2025. Large Language Models, multimodal AI, and agentic systems are reshaping entire industries. As a student, understanding these shifts positions you ahead of the curve.</p><h3>Must-Know Skills</h3><p>• <strong>Prompt Engineering</strong> — How to effectively communicate with LLMs to get reliable outputs<br>• <strong>RAG (Retrieval Augmented Generation)</strong> — Grounding LLMs with your own knowledge base<br>• <strong>Fine-tuning</strong> — Adapting pre-trained models for specific tasks<br>• <strong>Vector Databases</strong> — Pinecone, Weaviate, Chroma for semantic search</p><h3>Top Frameworks in 2025</h3><p>LangChain and LlamaIndex dominate agentic AI pipelines. HuggingFace remains the go-to for open-source models. PyTorch is the framework of choice for researchers.</p><h3>Career Opportunities</h3><p>AI Engineers, ML Ops specialists, and AI Product Managers are among the highest-demand roles. Even non-AI roles now expect AI literacy — knowing how to integrate AI APIs is a baseline skill.</p><h3>What to Build</h3><p>Build projects that solve real problems: AI tutors, code review bots, document Q&A systems, or predictive analytics tools. Practical experience beats theory every time in this field.</p>'})">
+      <span class="blog-cat-tag">Industry Trends</span>
+      <div class="blog-title">AI in 2025: What Students Should Know</div>
+      <p class="blog-desc">The AI landscape is evolving fast. Here's what skills, tools, and frameworks you need to stay ahead as a student developer.</p>
+      <div class="blog-meta">VECTORIX · 2025 · 6 min read</div>
+    </div>
+  </div>
+</section>
+  <footer><div>© 2025 <span>VECTORIX</span> — All systems operational</div><div>Build. Learn. Innovate.</div></footer>
+</div>
+
+<!-- ═══════════════════════════════════════
+     BLOG MODAL
+═══════════════════════════════════════ -->
+<div id="blog-modal" class="blog-modal" onclick="if(event.target===this)closeBlogModal()">
+  <div class="blog-modal-inner">
+    <button class="blog-modal-close" onclick="closeBlogModal()">✕</button>
+    <div class="blog-modal-cat-tag" id="modal-cat"></div>
+    <h2 class="blog-modal-title" id="modal-title"></h2>
+    <div class="blog-modal-meta" id="modal-meta"></div>
+    <div class="blog-modal-image-wrap" id="modal-image-wrap" style="display:none">
+      <img id="modal-image" src="" alt="" style="width:100%;max-height:320px;object-fit:cover;border:1px solid var(--border);margin-bottom:2rem;">
+    </div>
+    <div class="blog-modal-content" id="modal-content"></div>
+    <div class="blog-modal-link-wrap" id="modal-link-wrap" style="display:none">
+      <a id="modal-link" href="#" target="_blank" class="btn-primary" style="margin-top:2rem;display:inline-flex;">Read Full Article →</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════ -->
+<div id="page-contact" class="page" style="display:none">
+<section class="page-section">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-layout fade-in">
+    <div>
+      <div class="contact-headline">Have a <span class="hollow">question?</span> Let's talk.</div>
+      <p class="contact-intro">Have questions or want to collaborate? We'd love to hear from you — whether you're a student, mentor, partner, or just curious about VECTORIX.</p>
+      <div class="contact-links">
+        <a href="mailto:vectorix@gmail.com" class="contact-link-row">
+          <div class="contact-link-icon">✉</div>
+          <div><span class="contact-link-label">Email</span>vectorix@gmail.com</div>
+        </a>
+        <a href="https://github.com/vectorix-community" target="_blank" rel="noopener" class="contact-link-row">
+          <div class="contact-link-icon">⌥</div>
+          <div><span class="contact-link-label">GitHub</span>github.com/vectorix</div>
+        </a>
+        <a href="https://www.linkedin.com/company/vectorix-community/" target="_blank" rel="noopener" class="contact-link-row">
+          <div class="contact-link-icon">in</div>
+          <div><span class="contact-link-label">LinkedIn</span>VECTORIX Community</div>
+        </a>
+        <div class="contact-link-row" style="cursor:default">
+          <div class="contact-link-icon">📍</div>
+          <div><span class="contact-link-label">Location</span>Nationwide · India</div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <form class="contact-form" id="contactForm" autocomplete="off">
+        <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="Your full name" required></div>
+        <div class="form-field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-field"><label>Subject</label><input type="text" name="subject" placeholder="What's this about?"></div>
+        <div class="form-field"><label>Message</label><textarea name="message" placeholder="Tell us what you're working on..." style="min-height:140px;" required></textarea></div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:.75rem;letter-spacing:.05em;">We typically respond within 24 hours.</p>
+    </div>
+  </div>
+</section>
+  <footer><div>© 2025 <span>VECTORIX</span> — All systems operational</div><div>Build. Learn. Innovate.</div></footer>
+</div>
+
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html> 
