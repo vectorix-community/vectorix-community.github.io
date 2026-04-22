@@ -693,3 +693,10 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeBlogModal();
 });
 
+// Auto-inject footer everywhere
+document.querySelectorAll('footer').forEach(f => {
+  f.innerHTML = `
+    <div>© 2026 <span>VECTORIX COMMUNITY</span> — All systems operational</div>
+    <div>Build. Learn. Innovate.</div>
+  `;
+});
