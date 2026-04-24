@@ -345,7 +345,7 @@ setupForm('joinForm', 'Application Submitted');
  * View URL:  https://docs.google.com/forms/d/e/1FAIpQLSeyHoUr_PuCJTCMstOoYLX3FgV19RaDZFQvWqwNsphISjFjEw/viewform
  */
 (function initContactForm() {
-  const FORM_ACTION = 
+  const FORM_ACTION =
     'https://docs.google.com/forms/d/e/1FAIpQLSeyHoUr_PuCJTCMstOoYLX3FgV19RaDZFQvWqwNsphISjFjEw/formResponse';
 
   const FIELDS = {
@@ -437,25 +437,26 @@ setupForm('joinForm', 'Application Submitted');
     }, 1200);
   });
 })();
+
 /* ─── THEME TOGGLE ─── */
-const themeBtn  = document.getElementById('themeToggle');
-const logoImg   = document.getElementById('logoImg');
-const heroLogo  = document.querySelector('.main-logo');
+const themeBtn   = document.getElementById('themeToggle');
+const logoImg    = document.getElementById('logoImg');
+const heroLogo   = document.querySelector('.main-logo');
 const heroLogoo  = document.querySelector('.main-logoo');
 const themeLabel = themeBtn ? themeBtn.querySelector('.theme-label') : null;
 
 function applyTheme(mode) {
   if (mode === 'light') {
     document.body.classList.add('light-mode');
-    if (logoImg)  logoImg.src = 'images/White_Full.png';
-    if (heroLogo) heroLogo.src = 'images/Logo_white.png';
-    if (heroLogoo) heroLogoo.src = 'images/vivek_white.PNG';
+    if (logoImg)    logoImg.src  = 'images/White_Full.png';
+    if (heroLogo)   heroLogo.src = 'images/Logo_white.png';
+    if (heroLogoo)  heroLogoo.src = 'images/vivek_white.PNG';
     if (themeLabel) themeLabel.textContent = 'Dark';
   } else {
     document.body.classList.remove('light-mode');
-    if (logoImg)  logoImg.src = 'images/Black_Full.png';
-    if (heroLogo) heroLogo.src = 'images/Logo_black.png';
-    if (heroLogoo) heroLogoo.src = 'images/vivek_black.PNG';
+    if (logoImg)    logoImg.src  = 'images/Black_Full.png';
+    if (heroLogo)   heroLogo.src = 'images/Logo_black.png';
+    if (heroLogoo)  heroLogoo.src = 'images/vivek_black.PNG';
     if (themeLabel) themeLabel.textContent = 'Light';
   }
   localStorage.setItem('vx-theme', mode);
@@ -465,7 +466,8 @@ applyTheme(localStorage.getItem('vx-theme') || 'dark');
 
 if (themeBtn) {
   themeBtn.addEventListener('click', () => {
-    const next = document.body.classList.contains('light-mode') ? 'darki' : 'light';
+    // FIX: was 'darki' (typo) — caused dark mode toggle to silently do nothing
+    const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
     applyTheme(next);
   });
 }
@@ -578,6 +580,8 @@ async function loadEventsData() {
   const container = document.getElementById('events-grid-container');
   if (!container) return;
 
+  // Button appears whenever ev.link is set — 'Register' for upcoming, 'View Details' for past.
+  
   container.innerHTML = data.events.map(ev => `
     <div class="event-card ${ev.featured ? 'featured' : ''}">
       <div class="event-status ${ev.status === 'past' ? 'past' : 'upcoming'}">${ev.status === 'past' ? 'Past' : 'Upcoming'}</div>
@@ -589,8 +593,8 @@ async function loadEventsData() {
         ${ev.mode   ? `<div class="event-meta-item"><span>🌐</span> ${ev.mode}</div>`   : ''}
         ${ev.detail ? `<div class="event-meta-item"><span>📌</span> ${ev.detail}</div>` : ''}
       </div>
-      ${ev.status !== 'past' ? `<div class="event-btns">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb0X8_PF63QvWqsXMFJOyutPwHua_Xyey9260pZ6Fm5bfKAA/viewform?usp=header" target="_blank" class="btn-primary btn-glow" style="font-size:11px;padding:10px 18px;">Register →</a>
+      ${ev.link ? `<div class="event-btns">
+        <a href="${ev.link}" target="_blank" class="btn-primary btn-glow" style="font-size:11px;padding:10px 18px;">${ev.status === 'past' ? 'View Details →' : 'Register →'}</a>
       </div>` : ''}
     </div>
   `).join('');
