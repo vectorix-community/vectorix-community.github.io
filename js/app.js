@@ -580,8 +580,6 @@ async function loadEventsData() {
   const container = document.getElementById('events-grid-container');
   if (!container) return;
 
-  // Button appears whenever ev.link is set — 'Register' for upcoming, 'View Details' for past.
-  
   container.innerHTML = data.events.map(ev => `
     <div class="event-card ${ev.featured ? 'featured' : ''}">
       <div class="event-status ${ev.status === 'past' ? 'past' : 'upcoming'}">${ev.status === 'past' ? 'Past' : 'Upcoming'}</div>
@@ -593,12 +591,13 @@ async function loadEventsData() {
         ${ev.mode   ? `<div class="event-meta-item"><span>🌐</span> ${ev.mode}</div>`   : ''}
         ${ev.detail ? `<div class="event-meta-item"><span>📌</span> ${ev.detail}</div>` : ''}
       </div>
-      ${ev.link ? `<div class="event-btns">
-        <a href="${ev.link}" target="_blank" class="btn-primary btn-glow" style="font-size:11px;padding:10px 18px;">${ev.status === 'past' ? 'View Details →' : 'Register →'}</a>
+      ${ev.link && ev.status !== 'past' ? `<div class="event-btns">
+        <a href="${ev.link}" target="_blank" class="btn-primary btn-glow" style="font-size:11px;padding:10px 18px;">${ev.status === 'past' ? 'Register →' : 'Register →'}</a>
       </div>` : ''}
     </div>
   `).join('');
 }
+
 
 async function loadBlogData() {
   const data = await fetchSiteData();
